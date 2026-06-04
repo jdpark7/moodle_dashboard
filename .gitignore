@@ -1,0 +1,17 @@
+/node_modules
+/vendor
+.env
+.env.backup
+.env.production
+database.sqlite
+*.log
+
+# Testing / Cache / IDEs
+.phpunit.result.cache
+.vscode/
+.idea/
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/.auth
