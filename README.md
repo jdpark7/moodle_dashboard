@@ -34,6 +34,44 @@ Moodle Web Service(REST API)를 백엔드로 연동하여 학생들에게는 수
 
 ---
 
+## 📁 모듈형 폴더 구조 (Modular Architecture)
+본 프로젝트는 **`nwidart/laravel-modules`** 패키지를 기반으로 하여, Django의 앱 분리 방식과 같이 대시보드 코드를 하나의 독립된 모듈로 구조화하였습니다. 모든 라우트, 컨트롤러, 서비스, 메일, 뷰, 커맨드가 `Modules/MoodleDash` 폴더 내에 캡슐화되어 있습니다.
+
+```
+Modules/
+└── MoodleDash/
+    ├── app/
+    │   ├── Console/
+    │   │   └── MoodleSendEncouragement.php (Artisan Command)
+    │   ├── Http/
+    │   │   └── Controllers/
+    │   │       ├── Controller.php (Base Controller)
+    │   │       ├── LoginController.php
+    │   │       ├── StudentController.php
+    │   │       └── TeacherController.php
+    │   ├── Mail/
+    │   │   ├── EncouragementMail.php
+    │   │   └── TeacherSummaryMail.php
+    │   ├── Providers/
+    │   │   └── MoodleDashServiceProvider.php (Module Service Provider)
+    │   └── Services/
+    │       ├── AiMessageService.php
+    │       ├── MockMoodleService.php
+    │       └── MoodleService.php
+    ├── module.json (Module Metadata)
+    ├── resources/
+    │   └── views/ (Blade templates referenced via 'moodledash::')
+    │       ├── emails/
+    │       ├── layouts/
+    │       ├── login.blade.php
+    │       ├── student_dashboard.blade.php
+    │       └── teacher_dashboard.blade.php
+    └── routes/
+        └── web.php (Module routes loaded under 'web' middleware group)
+```
+
+---
+
 ## 💻 설치 및 구동 방법 (Setup Guide)
 
 ### 1. 프로젝트 다운로드 및 이동
@@ -41,10 +79,11 @@ Moodle Web Service(REST API)를 백엔드로 연동하여 학생들에게는 수
 cd C:\Users\USER\moodledashboard-laravel
 ```
 
-### 2. 패키지 설치
-Composer 의존성 패키지를 로컬 환경에 맞게 다운로드합니다.
+### 2. 패키지 및 오토로드 설정
+Composer 의존성 패키지를 로컬 환경에 맞게 다운로드하고 모듈 네임스페이스(`Modules\`)를 바인딩합니다.
 ```bash
 composer install
+composer dump-autoload
 ```
 
 ### 3. 환경 설정 (.env)

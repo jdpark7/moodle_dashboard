@@ -1,0 +1,12 @@
+{
+    "name": "MoodleDash",
+    "alias": "moodledash",
+    "description": "Moodle Student & Teacher Dashboard App Module",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\MoodleDash\\Providers\\MoodleDashServiceProvider"
+    ],
+    "files": [],
+    "requires": []
+}
