@@ -63,6 +63,13 @@
             "advisories": {
                 "block": false
             }
+        },
+        "audit": {
+            "ignore": {
+                "PKSA-mdq4-51ck-6kdq": "Laravel 11.x is affected; no patch backported to 11.x yet. Safe to ignore if not accepting CRLF in email validation inputs.",
+                "CVE-2026-48019": "Laravel 11.x is affected; no patch backported to 11.x yet. Safe to ignore if not accepting CRLF in email validation inputs.",
+                "GHSA-5vg9-5847-vvmq": "Laravel 11.x is affected; no patch backported to 11.x yet. Safe to ignore if not accepting CRLF in email validation inputs."
+            }
         }
     },
     "minimum-stability": "stable",
