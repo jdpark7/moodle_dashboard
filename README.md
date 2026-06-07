@@ -1,41 +1,41 @@
 # Moodle LMS Dashboard (Laravel Version)
 
-Moodle Web Service(REST API)를 백엔드로 연동하여 학생들에게는 수강 신청 및 과제 추적 기능을 제공하고, 교수자에게는 학업 진도율 분석 및 AI를 통한 개별 학습 독려 이메일 발송 기능을 제공하는 풀스택 대시보드 웹 애플리케이션입니다.
+A full-stack dashboard web application that integrates the Moodle Web Service (REST API) as a backend. It provides students with course registration and assignment tracking features, while equipping teachers with academic progress analytics and automated individual encouragement email dispatch powered by AI.
 
 ---
 
-## 🚀 주요 기능 (Features)
+## 🚀 Key Features
 
-### 👨‍🎓 학생 포털 (Student Portal)
-* **수강 강좌 및 진도율**: 현재 수강 신청한 과목 리스트와 개별 이수 진행 상태(%)를 시각화된 프로그레스 바로 제공합니다.
-* **통합 과제 관리**: 전체 수강 과목의 미제출 과제를 마감 기한이 임박한 순서대로 실시간 카운트다운 타이머와 함께 모아 보여줍니다.
-* **수강신청 시뮬레이터**: Moodle 강좌 목록 중 미수강 강좌를 조회하여 실시간으로 수강 신청을 처리합니다.
-* **수강 이력 관리**: 이전 학기 또는 이미 100% 이수한 완료 강좌들을 타임라인 형태로 표시합니다.
+### 👨‍🎓 Student Portal
+* **Enrolled Courses & Progress**: Displays currently enrolled courses with their individual completion progress (%) visualized as sleek progress bars.
+* **Integrated Assignment Management**: Aggregates all pending assignments across enrolled courses, sorted by deadline, with real-time remaining time tracking.
+* **Course Enrollment Simulator**: Allows students to browse available Moodle courses they haven't enrolled in yet and register in real-time.
+* **Course History Management**: Displays completed or past semester courses in a timeline layout.
 
-### 👨‍🏫 교수자 분석 포털 (Teacher Portal)
-* **과목별 학습 분석 대시보드**: 총 수강생 수, 이수 완료도 평균, 미채점 과제 건수를 메트릭 카드로 한눈에 모니터링합니다.
-* **데이터 시각화 (Chart.js)**:
-  * 주간 학생 로그인 접속 횟수 추이 (Line Chart)
-  * 학급 전체의 예상 평가 성적 분포도 (Bar Chart)
-* **주의 대상자(위험군) 경보**: 7일 이상 로그인 기록이 없거나 진도율이 45% 미만인 취약 학생을 실시간 분류해 줍니다.
-* **학생 분석 Roster**: 검색 및 상세 진단 기능을 포함한 수강생 목록 테이블을 제공합니다.
-* **1:1 상세 진료 모달**: 학생별 세부 과제/퀴즈 점수를 조회하고, 지도 소견 피드백을 저장 및 실시간 업데이트합니다.
-* **AI 독려 메일 발송**: 
-  * 주의 대상 학생에게 **구글 Gemini AI**를 활용해 학생의 이름, 결석 일수 또는 미제출 과제 이름을 분석한 맞춤형 격려 메일을 자동 생성합니다.
-  * 한 번의 클릭으로 학생에게 발송하고 교수자에게 요약 보고서 이메일을 발송합니다.
+### 👨‍🏫 Teacher Analytics Portal
+* **Course Analytics Dashboard**: Monitor student counts, average completion progress, and ungraded assignment counts at a glance with metric cards.
+* **Data Visualization (Chart.js)**:
+  * Weekly student login trends (Line Chart)
+  * Grade distribution prediction for the entire class (Bar Chart)
+* **At-Risk Student Alerts**: Automatically identifies and categorizes high-risk students who have not logged in for over 7 days or have a completion progress below 45%.
+* **Student Roster**: Interactive student listing with search and detailed academic diagnostics.
+* **1:1 Academic Diagnosis Modal**: View detailed assignment and quiz scores for individual students, and save or update advising comments in real-time.
+* **AI Encouragement Mailer**: 
+  * Generates personalized encouragement emails using **Google Gemini AI** by analyzing the student's name, consecutive days absent, or names of missing assignments.
+  * Sends the generated email to the student and emails a summary report to the teacher with a single click.
 
 ---
 
-## 🛠️ 기술 스택 (Tech Stack)
-* **Backend**: Laravel 11 (PHP 8.2+)
-* **Frontend**: HTML5, Blade Template, Tailwind CSS (CDN), Lucide Icons, Chart.js
+## 🛠️ Tech Stack
+* **Backend**: Laravel 12 (PHP 8.2+)
+* **Frontend**: HTML5, Blade Templates, Tailwind CSS (CDN), Lucide Icons, Chart.js
 * **AI API**: Google Gemini 2.5 Flash Model
-* **Database**: SQLite (기본 세션 및 연동 데이터 캐싱)
+* **Database**: SQLite / MariaDB (Handles session data and connection caching)
 
 ---
 
-## 📁 모듈형 폴더 구조 (Modular Architecture)
-본 프로젝트는 **`nwidart/laravel-modules`** 패키지를 기반으로 하여, Django의 앱 분리 방식과 같이 대시보드 코드를 하나의 독립된 모듈로 구조화하였습니다. 모든 라우트, 컨트롤러, 서비스, 메일, 뷰, 커맨드가 `Modules/MoodleDash` 폴더 내에 캡슐화되어 있습니다.
+## 📁 Modular Architecture
+This project uses the **`nwidart/laravel-modules`** package to modularize dashboard components, resembling Django's app structure. All routes, controllers, services, mails, views, and console commands are encapsulated inside the `Modules/MoodleDash` directory.
 
 ```
 Modules/
@@ -72,55 +72,55 @@ Modules/
 
 ---
 
-## 💻 설치 및 구동 방법 (Setup Guide)
+## 💻 Setup Guide
 
-### 1. 프로젝트 다운로드 및 이동
+### 1. Clone & Navigate to Project Directory
 ```bash
 cd C:\Users\USER\moodledashboard-laravel
 ```
 
-### 2. 패키지 및 오토로드 설정
-Composer 의존성 패키지를 로컬 환경에 맞게 다운로드하고 모듈 네임스페이스(`Modules\`)를 바인딩합니다.
+### 2. Install Packages & Autoload Configuration
+Download the required Composer packages and bind the module namespace (`Modules\`).
 ```bash
 composer install
 composer dump-autoload
 ```
 
-### 3. 환경 설정 (.env)
-기존에 생성되어 있는 `.env` 파일을 확인하고, 구글 Gemini API 연동이 필요한 경우 키값을 등록합니다.
+### 3. Environment Configuration (`.env`)
+Configure your `.env` file. If you wish to enable Google Gemini AI features, configure your API key.
 ```env
-# Gemini API 설정
+# Gemini API Configuration
 GEMINI_API_KEY=your_google_gemini_api_key_here
 
-# 메일 테스트 설정 (보안상 개발 환경에서는 이메일을 파일에 로그로 남깁니다)
+# Mail Testing Configuration (Saves emails as files in development)
 MAIL_MAILER=log
 ```
 
-### 4. 고유 암호화 키 생성
+### 4. Generate Application Key
 ```bash
 php artisan key:generate
 ```
 
-### 5. 로컬 개발 서버 기동
+### 5. Run the Local Development Server
 ```bash
 php artisan serve
 ```
-서버가 켜지면 브라우저에서 **[http://127.0.0.1:8000](http://127.0.0.1:8000)**에 접속합니다.
+Once the server is running, open your browser and navigate to **[http://127.0.0.1:8000](http://127.0.0.1:8000)**.
 
 ---
 
-## ⚙️ AI 자동화 및 메일링 검증
+## ⚙️ AI Automation & Email Verification
 
-### 1. 대시보드 내 즉시 전송
-교수자 대시보드 화면 내 **"AI 독려 메일 발송"** 버튼을 클릭하면, 실시간으로 AI 문구가 생성되어 백엔드에서 메일이 발송되고 결과 보고서가 화면에 팝업됩니다.
+### 1. Instant Dispatch from Dashboard
+Clicking the **"Send AI Encouragement Mail"** button on the teacher dashboard generates a customized AI message in real-time, dispatches the email in the background, and displays a summary report pop-up.
 
-### 2. Daily Cron 스케줄러 (Artisan 배치)
-매일 정해진 시간에 자동으로 미접속/미제출 자를 추적해 이메일을 발송하도록 스케줄러가 [routes/console.php](routes/console.php)에 등록되어 있습니다.
-터미널에서 수동으로 스케줄링 명령을 테스트해 보려면 아래와 같이 실행합니다.
+### 2. Daily Cron Scheduler (Artisan Batch)
+A cron schedule is registered in [routes/console.php](routes/console.php) to automatically track inactive students or pending assignments and send emails at specified times.
+To manually test the scheduling command in your terminal, run:
 ```bash
 php artisan moodle:send-encouragement
 ```
 
-### 3. 발송된 이메일 로그 확인
-본 프로젝트는 보안을 위해 SMTP 연동 대신 `MAIL_MAILER=log` 방식을 취하고 있어, 발송된 격려 메일 및 요약 보고서 메일이 실제로 발송되는 대신 아래 경로에 파일 로그로 상세히 기록됩니다:
+### 3. Check Sent Email Logs
+For safety and testing purposes, the application defaults to `MAIL_MAILER=log`. Dispatched student encouragement and teacher summary emails will be recorded in detail inside the local log file instead of sending out real emails:
 * **`storage/logs/laravel.log`**
