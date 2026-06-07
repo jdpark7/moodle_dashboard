@@ -112,7 +112,13 @@ class StudentController extends Controller
 
         } catch (Exception $e) {
             return view('moodledash::student_dashboard', [
-                'enrolled_courses' => []
+                'enrolled_courses' => [],
+                'history_courses' => [],
+                'catalog_courses' => [],
+                'pending_assignments' => [],
+                'total_courses' => 0,
+                'avg_progress' => 0,
+                'pending_count' => 0
             ])->withErrors(['error' => '학습 정보를 불러오지 못했습니다: ' . $e->getMessage()]);
         }
     }

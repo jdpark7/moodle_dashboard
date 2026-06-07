@@ -15,3 +15,14 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 /.auth
+
+# Laravel Cache and Storage ignores
+/bootstrap/cache/*.php
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/app/public/*
+/storage/framework/cache/data/*
+/storage/framework/views/*.php
+/storage/framework/sessions/*

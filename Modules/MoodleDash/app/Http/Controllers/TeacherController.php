@@ -160,8 +160,24 @@ class TeacherController extends Controller
             return view('moodledash::teacher_dashboard', $context);
 
         } catch (Exception $e) {
-            return view('moodledash::teacher_dashboard', ['courses' => []])
-                ->withErrors(['error' => '교수자 데이터 동기화 실패: ' . $e->getMessage()]);
+            return view('moodledash::teacher_dashboard', [
+                'courses' => [],
+                'selected_course_id' => 0,
+                'selected_course' => [
+                    'fullname' => '데이터 동기화 오류',
+                    'summary' => '데이터베이스 연결 상태 또는 테이블 생성 여부를 확인해 주세요.'
+                ],
+                'students' => [],
+                'total_students' => 0,
+                'avg_progress' => 0,
+                'pending_grades_count' => 0,
+                'risk_students' => [],
+                'risk_students_count' => 0,
+                'assignments_summary' => [],
+                'chart_grades_labels' => [],
+                'chart_grades_data' => [],
+                'weekly_login_trends' => []
+            ])->withErrors(['error' => '교수자 데이터 동기화 실패: ' . $e->getMessage()]);
         }
     }
 
