@@ -37,12 +37,12 @@ class RegisterController extends Controller
             'userpictureurl' => 'nullable|url',
             'userpicture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ], [
-            'username.unique' => '이미 존재하는 아이디입니다.',
-            'email.unique' => '이미 등록된 이메일입니다.',
-            'password.confirmed' => '비밀번호 확인이 일치하지 않습니다.',
-            'password.min' => '비밀번호는 최소 6자 이상이어야 합니다.',
-            'userpicture.image' => '올바른 이미지 파일 형식이 아닙니다.',
-            'userpicture.max' => '이미지 크기는 최대 2MB까지 가능합니다.'
+            'username.unique' => 'This username is already taken.',
+            'email.unique' => 'This email is already registered.',
+            'password.confirmed' => 'The password confirmation does not match.',
+            'password.min' => 'The password must be at least 6 characters.',
+            'userpicture.image' => 'The file must be an image.',
+            'userpicture.max' => 'The image size cannot exceed 2MB.'
         ]);
 
         try {
@@ -84,7 +84,7 @@ class RegisterController extends Controller
                     'user_id' => $user->id,
                     'course_id' => 101, // CSE201
                     'progress' => 0,
-                    'feedback' => '수강신청을 완료하고 학습을 시작한 상태입니다.'
+                    'feedback' => 'Enrollment completed. Ready to start learning.'
                 ]);
 
                 // Create initial submissions for course 101 assignments
@@ -116,11 +116,11 @@ class RegisterController extends Controller
             ]);
 
             return $user->role === 'teacher'
-                ? redirect()->route('teacher.dashboard')->with('success', '교수자 회원가입 성공!')
-                : redirect()->route('student.dashboard')->with('success', '학생 회원가입 성공!');
+                ? redirect()->route('teacher.dashboard')->with('success', 'Teacher registration successful!')
+                : redirect()->route('student.dashboard')->with('success', 'Student registration successful!');
 
         } catch (Exception $e) {
-            return back()->withInput()->withErrors(['error' => '회원가입 중 오류가 발생했습니다: ' . $e->getMessage()]);
+            return back()->withInput()->withErrors(['error' => 'An error occurred during registration: ' . $e->getMessage()]);
         }
     }
 }

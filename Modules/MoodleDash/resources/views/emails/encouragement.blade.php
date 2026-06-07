@@ -48,13 +48,13 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>LMS 학습 모니터링 안내</h1>
+            <h1>LMS Learning Progress Notice</h1>
         </div>
         <div class="content">
             {!! nl2br(e($aiMessage)) !!}
         </div>
         <div class="footer">
-            본 메일은 {{ $courseName }} 강좌의 학습 현황에 근거하여 자동으로 발송되었습니다.<br>
+            This email was sent automatically based on your learning status in the course {{ $courseName }}.<br>
             © Antigravity University LMS Board
         </div>
     </div>

@@ -15,7 +15,7 @@ class StudentController extends Controller
     public function dashboard()
     {
         if (!Auth::check() || Auth::user()->role !== 'student') {
-            return redirect()->route('login')->with('warning', '학생 계정으로 로그인해 주세요.');
+            return redirect()->route('login')->with('warning', 'Please log in with a student account.');
         }
 
         $user = Auth::user();
@@ -72,13 +72,13 @@ class StudentController extends Controller
                         $pendingAssignments[] = [
                             'id' => $a->id,
                             'course_id' => $a->course_id,
-                            'course_name' => $course ? $course->fullname : '기타 강좌',
+                            'course_name' => $course ? $course->fullname : 'Other Course',
                             'name' => $a->name,
                             'deadline' => $a->deadline,
                             'maxgrade' => $a->maxgrade,
                             'remaining_text' => $daysLeft > 0 
-                                ? "{$daysLeft}일 {$hoursLeft}시간 남음" 
-                                : "{$hoursLeft}시간 남음",
+                                ? "{$daysLeft}d {$hoursLeft}h left" 
+                                : "{$hoursLeft}h left",
                             'days_left' => $daysLeft
                         ];
                     }
@@ -119,7 +119,7 @@ class StudentController extends Controller
                 'total_courses' => 0,
                 'avg_progress' => 0,
                 'pending_count' => 0
-            ])->withErrors(['error' => '학습 정보를 불러오지 못했습니다: ' . $e->getMessage()]);
+            ])->withErrors(['error' => 'Failed to load student dashboard information: ' . $e->getMessage()]);
         }
     }
 
@@ -140,7 +140,7 @@ class StudentController extends Controller
             // Check if already enrolled
             $isEnrolled = Enrollment::where('user_id', $user->id)->where('course_id', $courseId)->exists();
             if ($isEnrolled) {
-                return response()->json(['status' => false, 'message' => '이미 수강신청된 강좌입니다.']);
+                return response()->json(['status' => false, 'message' => 'You are already enrolled in this course.']);
             }
 
             // Create Enrollment
@@ -148,7 +148,7 @@ class StudentController extends Controller
                 'user_id' => $user->id,
                 'course_id' => $courseId,
                 'progress' => 0,
-                'feedback' => '정상 학습 수행 중인 학생입니다.'
+                'feedback' => 'Student is learning actively.'
             ]);
 
             // Seed empty submissions for all course assignments
@@ -163,7 +163,7 @@ class StudentController extends Controller
                 ]);
             }
 
-            session()->flash('success', '수강신청이 성공적으로 완료되었습니다!');
+            session()->flash('success', 'Successfully enrolled in course!');
             return response()->json(['status' => true]);
 
         } catch (Exception $e) {

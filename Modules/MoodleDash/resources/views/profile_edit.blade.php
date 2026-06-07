@@ -1,6 +1,6 @@
 @extends('moodledash::layouts.app')
 
-@section('title', '내 프로필 수정')
+@section('title', 'Edit Profile')
 
 @section('content')
 <div class="max-w-xl mx-auto fade-in">
@@ -15,23 +15,23 @@
                 <i data-lucide="settings" class="w-6 h-6"></i>
             </div>
             <div>
-                <h1 class="text-xl font-bold text-white tracking-wide">내 프로필 수정</h1>
-                <p class="text-xs text-slate-400 mt-0.5">개인정보 및 로그인 비밀번호를 변경합니다</p>
+                <h1 class="text-xl font-bold text-white tracking-wide">Edit Profile</h1>
+                <p class="text-xs text-slate-400 mt-0.5">Update personal details and login password</p>
             </div>
             <div class="ml-auto text-right">
                 <span class="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider {{ $user->role === 'teacher' ? 'bg-indigo-500/15 text-indigo-400 border border-indigo-500/25' : 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/25' }}">
-                    {{ $user->role === 'teacher' ? '교수자' : '학생' }}
+                    {{ $user->role === 'teacher' ? 'Teacher' : 'Student' }}
                 </span>
             </div>
         </div>
 
         <!-- Form for Profile Modification -->
-        <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="space-y-5 relative z-10" onsubmit="showLoading('정보 수정 반영 중...')">
+        <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="space-y-5 relative z-10" onsubmit="showLoading('Updating profile...')">
             @csrf
 
             <!-- Username (Read-only) -->
             <div class="space-y-1">
-                <label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">아이디 (변경 불가)</label>
+                <label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Username (Cannot be changed)</label>
                 <div class="relative">
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-600">
                         <i data-lucide="lock" class="w-4 h-4"></i>
@@ -44,12 +44,12 @@
             <!-- Full Name (Last / First) -->
             <div class="grid grid-cols-2 gap-4">
                 <div class="space-y-1">
-                    <label for="lastname" class="text-xs font-semibold text-slate-400 uppercase tracking-wider">성 (Last Name)</label>
+                    <label for="lastname" class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Last Name</label>
                     <input type="text" name="lastname" id="lastname" required value="{{ old('lastname', $user->lastname) }}"
                            class="w-full bg-slate-950/40 border border-slate-800 focus:border-brand-500 rounded-xl py-2.5 px-4 text-sm text-slate-100 focus:outline-none transition-colors">
                 </div>
                 <div class="space-y-1">
-                    <label for="firstname" class="text-xs font-semibold text-slate-400 uppercase tracking-wider">이름 (First Name)</label>
+                    <label for="firstname" class="text-xs font-semibold text-slate-400 uppercase tracking-wider">First Name</label>
                     <input type="text" name="firstname" id="firstname" required value="{{ old('firstname', $user->firstname) }}"
                            class="w-full bg-slate-950/40 border border-slate-800 focus:border-brand-500 rounded-xl py-2.5 px-4 text-sm text-slate-100 focus:outline-none transition-colors">
                 </div>
@@ -57,7 +57,7 @@
 
             <!-- Email -->
             <div class="space-y-1">
-                <label for="email" class="text-xs font-semibold text-slate-400 uppercase tracking-wider">이메일 주소</label>
+                <label for="email" class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Email Address</label>
                 <input type="email" name="email" id="email" required value="{{ old('email', $user->email) }}"
                        class="w-full bg-slate-950/40 border border-slate-800 focus:border-brand-500 rounded-xl py-2.5 px-4 text-sm text-slate-100 focus:outline-none transition-colors">
             </div>
@@ -65,12 +65,12 @@
             <!-- Phone Number & Address -->
             <div class="grid grid-cols-2 gap-4">
                 <div class="space-y-1">
-                    <label for="phone_number" class="text-xs font-semibold text-slate-400 uppercase tracking-wider">전화번호</label>
+                    <label for="phone_number" class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Phone Number</label>
                     <input type="text" name="phone_number" id="phone_number" value="{{ old('phone_number', $user->phone_number) }}"
                            class="w-full bg-slate-950/40 border border-slate-800 focus:border-brand-500 rounded-xl py-2.5 px-4 text-sm text-slate-100 focus:outline-none transition-colors">
                 </div>
                 <div class="space-y-1">
-                    <label for="address" class="text-xs font-semibold text-slate-400 uppercase tracking-wider">주소</label>
+                    <label for="address" class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Address</label>
                     <input type="text" name="address" id="address" value="{{ old('address', $user->address) }}"
                            class="w-full bg-slate-950/40 border border-slate-800 focus:border-brand-500 rounded-xl py-2.5 px-4 text-sm text-slate-100 focus:outline-none transition-colors">
                 </div>
@@ -78,7 +78,7 @@
 
             <!-- Avatar selection -->
             <div class="space-y-3">
-                <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">프로필 이미지 변경</label>
+                <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Change Profile Image</label>
                 <input type="hidden" name="userpictureurl" id="userpictureurl" value="{{ $user->userpictureurl }}">
                 
                 <!-- File Upload -->
@@ -115,20 +115,20 @@
             <!-- Password Change Section (Optional) -->
             <div class="border-t border-slate-800/80 pt-4 space-y-4">
                 <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">비밀번호 변경 (변경할 경우만 입력)</span>
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Change Password (Leave blank to keep current password)</span>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="space-y-1">
-                        <label for="password" class="text-xs font-semibold text-slate-500">새 비밀번호</label>
+                        <label for="password" class="text-xs font-semibold text-slate-500">New Password</label>
                         <input type="password" name="password" id="password"
                                class="w-full bg-slate-950/40 border border-slate-800 focus:border-brand-500 rounded-xl py-2.5 px-4 text-sm text-slate-100 focus:outline-none transition-colors"
-                               placeholder="최소 6자 이상">
+                               placeholder="Min 6 characters">
                     </div>
                     <div class="space-y-1">
-                        <label for="password_confirmation" class="text-xs font-semibold text-slate-500">새 비밀번호 확인</label>
+                        <label for="password_confirmation" class="text-xs font-semibold text-slate-500">Confirm New Password</label>
                         <input type="password" name="password_confirmation" id="password_confirmation"
                                class="w-full bg-slate-950/40 border border-slate-800 focus:border-brand-500 rounded-xl py-2.5 px-4 text-sm text-slate-100 focus:outline-none transition-colors"
-                               placeholder="비밀번호 재입력">
+                               placeholder="Re-enter new password">
                     </div>
                 </div>
             </div>
@@ -137,11 +137,11 @@
             <div class="flex items-center gap-3 pt-3">
                 <a href="{{ $user->role === 'teacher' ? route('teacher.dashboard') : route('student.dashboard') }}"
                    class="flex-1 bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 font-semibold py-3 rounded-xl transition-all duration-200 text-center">
-                    대시보드로 돌아가기
+                    Back to Dashboard
                 </a>
                 <button type="submit" class="flex-1 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold py-3 rounded-xl shadow-lg transition-all duration-200 flex items-center justify-center gap-2">
                     <i data-lucide="save" class="w-4.5 h-4.5"></i>
-                    저장하기
+                    Save Changes
                 </button>
             </div>
         </form>

@@ -24,9 +24,9 @@ class MockMoodleService
         $this->teacherInfo = [
             'sitename' => "Antigravity University LMS",
             'username' => "prof_kim",
-            'firstname' => "민수",
-            'lastname' => "김",
-            'fullname' => "김민수 교수",
+            'firstname' => "Minsu",
+            'lastname' => "Kim",
+            'fullname' => "Prof. Minsu Kim",
             'userid' => 99,
             'userpictureurl' => "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200"
         ];
@@ -34,9 +34,9 @@ class MockMoodleService
         $this->studentInfo = [
             'sitename' => "Antigravity University LMS",
             'username' => "student_hong",
-            'firstname' => "길동",
-            'lastname' => "홍",
-            'fullname' => "홍길동",
+            'firstname' => "Gildong",
+            'lastname' => "Hong",
+            'fullname' => "Gildong Hong",
             'userid' => 1001,
             'userpictureurl' => "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=200"
         ];
@@ -44,54 +44,54 @@ class MockMoodleService
         $this->allCourses = [
             101 => [
                 'id' => 101,
-                'fullname' => "CSE201: 자료구조 (Data Structures)",
-                'shortname' => "자료구조",
-                'summary' => "리스트, 스택, 큐, 트리, 그래프 등의 기본 자료구조 개념과 알고리즘 분석 및 구현 방법을 학습합니다.",
+                'fullname' => "CSE201: Data Structures",
+                'shortname' => "Data Structures",
+                'summary' => "Learn fundamental data structures such as lists, stacks, queues, trees, and graphs, along with algorithm analysis and implementation.",
                 'startdate' => time() - 90 * 86400,
                 'enrolledusercount' => 32,
                 'progress' => 68
             ],
             102 => [
                 'id' => 102,
-                'fullname' => "CSE305: 인공지능 입문 (Introduction to AI)",
-                'shortname' => "인공지능 입문",
-                'summary' => "인공지능의 역사와 전통적인 탐색 방법, 기계학습, 신경망 및 딥러닝 입문 개념을 전반적으로 소개합니다.",
+                'fullname' => "CSE305: Introduction to AI",
+                'shortname' => "Intro to AI",
+                'summary' => "Introduction to the history of AI, classic search methods, machine learning, neural networks, and deep learning.",
                 'startdate' => time() - 90 * 86400,
                 'enrolledusercount' => 45,
                 'progress' => 52
             ],
             103 => [
                 'id' => 103,
-                'fullname' => "CSE402: 웹 시스템 설계 (Web Systems Design)",
-                'shortname' => "웹 설계",
-                'summary' => "풀스택 웹 프레임워크 설계와 REST API 구현, 데이터베이스 연동 및 배포 전략을 다룹니다.",
+                'fullname' => "CSE402: Web Systems Design",
+                'shortname' => "Web Systems Design",
+                'summary' => "Covers full-stack web framework architecture, REST API design, database integration, and deployment strategies.",
                 'startdate' => time() - 90 * 86400,
                 'enrolledusercount' => 24,
                 'progress' => 74
             ],
             201 => [
                 'id' => 201,
-                'fullname' => "CSE302: 알고리즘 설계 및 분석 (Algorithm Design)",
-                'shortname' => "알고리즘 분석",
-                'summary' => "탐욕 알고리즘, 분할 정복, 동적 계획법 등 컴퓨터 알고리즘 설계 기법과 계산 복잡도를 체계적으로 다룹니다.",
+                'fullname' => "CSE302: Algorithm Design & Analysis",
+                'shortname' => "Algorithms",
+                'summary' => "Covers algorithm design paradigms like greedy, divide-and-conquer, dynamic programming, and complexity analysis.",
                 'startdate' => time() + 10 * 86400,
                 'enrolledusercount' => 0,
                 'progress' => 0
             ],
             202 => [
                 'id' => 202,
-                'fullname' => "CSE204: 데이터베이스 시스템 (Database Systems)",
-                'shortname' => "데이터베이스",
-                'summary' => "관계형 데이터베이스 모델, SQL 질의어 작성, 스키마 정규화 및 트랜잭션 개념과 인덱싱 기법을 학습합니다.",
+                'fullname' => "CSE204: Database Systems",
+                'shortname' => "Databases",
+                'summary' => "Learn relational database modeling, SQL, schema normalization, transactions, and indexing.",
                 'startdate' => time() + 15 * 86400,
                 'enrolledusercount' => 0,
                 'progress' => 0
             ],
             203 => [
                 'id' => 203,
-                'fullname' => "CSE309: 컴퓨터 네트워크 (Computer Networks)",
-                'shortname' => "컴퓨터 네트워크",
-                'summary' => "TCP/IP 프로토콜 스택, 소켓 프로그래밍, 라우팅 및 스위칭 메커니즘과 네트워크 보안 기본을 다룹니다.",
+                'fullname' => "CSE309: Computer Networks",
+                'shortname' => "Networks",
+                'summary' => "Covers TCP/IP protocols, socket programming, routing, switching, and network security basics.",
                 'startdate' => time() + 20 * 86400,
                 'enrolledusercount' => 0,
                 'progress' => 0
@@ -99,18 +99,18 @@ class MockMoodleService
             // Past Courses
             99 => [
                 'id' => 99,
-                'fullname' => "CSE101: 컴퓨터 프로그래밍 입문 (Intro to Coding)",
-                'shortname' => "프로그래밍 입문",
-                'summary' => "Python을 활용하여 변수, 루프, 조건문, 함수 등 기초적인 프로그래밍 논리와 문제 해결을 습득합니다.",
+                'fullname' => "CSE101: Introduction to Programming",
+                'shortname' => "Intro to Programming",
+                'summary' => "Learn basic programming logic using Python, covering variables, loops, conditionals, and functions.",
                 'startdate' => time() - 200 * 86400,
                 'enrolledusercount' => 50,
                 'progress' => 100
             ],
             98 => [
                 'id' => 98,
-                'fullname' => "MATH103: 이산수학 (Discrete Mathematics)",
-                'shortname' => "이산수학",
-                'summary' => "논리, 집합, 행렬, 관계, 그래프 이론 등 컴퓨터 과학 전반의 수학적 기초를 쌓습니다.",
+                'fullname' => "MATH103: Discrete Mathematics",
+                'shortname' => "Discrete Math",
+                'summary' => "Build mathematical foundations for computer science, covering logic, sets, matrices, and graph theory.",
                 'startdate' => time() - 200 * 86400,
                 'enrolledusercount' => 42,
                 'progress' => 100
@@ -118,48 +118,48 @@ class MockMoodleService
         ];
 
         $this->mockStudentTemplates = [
-            ['id' => 2001, 'name' => "이지원", 'email' => "jw.lee@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150"],
-            ['id' => 2002, 'name' => "박민준", 'email' => "mj.park@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150"],
-            ['id' => 2003, 'name' => "김하은", 'email' => "he.kim@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150"],
-            ['id' => 2004, 'name' => "최우진", 'email' => "wj.choi@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150"],
-            ['id' => 2005, 'name' => "윤서연", 'email' => "sy.yoon@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150"],
-            ['id' => 2006, 'name' => "정도현", 'email' => "dh.jung@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=150"],
-            ['id' => 2007, 'name' => "한민아", 'email' => "ma.han@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=150"],
-            ['id' => 2008, 'name' => "강동우", 'email' => "dw.kang@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&q=80&w=150"],
-            ['id' => 2009, 'name' => "조수아", 'email' => "sa.cho@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150"],
-            ['id' => 2010, 'name' => "송지호", 'email' => "jh.song@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150"]
+            ['id' => 2001, 'name' => "Jiwon Lee", 'email' => "jw.lee@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150"],
+            ['id' => 2002, 'name' => "Minjun Park", 'email' => "mj.park@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150"],
+            ['id' => 2003, 'name' => "Haeun Kim", 'email' => "he.kim@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150"],
+            ['id' => 2004, 'name' => "Woojin Choi", 'email' => "wj.choi@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150"],
+            ['id' => 2005, 'name' => "Seoyeon Yoon", 'email' => "sy.yoon@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150"],
+            ['id' => 2006, 'name' => "Dohyun Jung", 'email' => "dh.jung@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=150"],
+            ['id' => 2007, 'name' => "Mina Han", 'email' => "ma.han@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=150"],
+            ['id' => 2008, 'name' => "Dongwoo Kang", 'email' => "dw.kang@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&q=80&w=150"],
+            ['id' => 2009, 'name' => "Sua Cho", 'email' => "sa.cho@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150"],
+            ['id' => 2010, 'name' => "Jiho Song", 'email' => "jh.song@univ.ac.kr", 'pic' => "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150"]
         ];
 
         $this->assignments = [
             101 => [
-                ['id' => 1001, 'name' => "과제 1: LinkedList와 ArrayList 비교 분석 및 구현", 'deadline' => time() - 30 * 86400, 'maxgrade' => 100],
-                ['id' => 1002, 'name' => "과제 2: 스택(Stack)을 이용한 계산기 프로그램 작성", 'deadline' => time() - 4 * 86400, 'maxgrade' => 100],
-                ['id' => 1003, 'name' => "과제 3: 이진 검색 트리(BST) 연산 기능 최적화", 'deadline' => time() + 8 * 86400, 'maxgrade' => 100]
+                ['id' => 1001, 'name' => "Assignment 1: Linked List & Array List Analysis", 'deadline' => time() - 30 * 86400, 'maxgrade' => 100],
+                ['id' => 1002, 'name' => "Assignment 2: Stack-based Calculator Implementation", 'deadline' => time() - 4 * 86400, 'maxgrade' => 100],
+                ['id' => 1003, 'name' => "Assignment 3: Binary Search Tree Optimization", 'deadline' => time() + 8 * 86400, 'maxgrade' => 100]
             ],
             102 => [
-                ['id' => 1004, 'name' => "실습 1: 너비/깊이 우선 탐색 알고리즘 미로 찾기", 'deadline' => time() - 20 * 86400, 'maxgrade' => 100],
-                ['id' => 1005, 'name' => "프로젝트 1: Scikit-learn을 이용한 주택 가격 예측", 'deadline' => time() - 2 * 86400, 'maxgrade' => 100],
-                ['id' => 1006, 'name' => "프로젝트 2: PyTorch/Tensorflow 활용 CNN 이미지 분류기", 'deadline' => time() + 15 * 86400, 'maxgrade' => 100]
+                ['id' => 1004, 'name' => "Lab 1: BFS/DFS Maze Solving Algorithm", 'deadline' => time() - 20 * 86400, 'maxgrade' => 100],
+                ['id' => 1005, 'name' => "Project 1: Housing Price Prediction with Scikit-learn", 'deadline' => time() - 2 * 86400, 'maxgrade' => 100],
+                ['id' => 1006, 'name' => "Project 2: CNN Image Classifier using PyTorch/TensorFlow", 'deadline' => time() + 15 * 86400, 'maxgrade' => 100]
             ],
             103 => [
-                ['id' => 1007, 'name' => "과제 1: HTML5/CSS3 활용 반응형 자기소개 페이지", 'deadline' => time() - 15 * 86400, 'maxgrade' => 50],
-                ['id' => 1008, 'name' => "과제 2: ExpressJS 백엔드 구축 및 REST API 실습", 'deadline' => time() + 3 * 86400, 'maxgrade' => 100]
+                ['id' => 1007, 'name' => "Assignment 1: Responsive Portfolio Page with HTML5/CSS3", 'deadline' => time() - 15 * 86400, 'maxgrade' => 50],
+                ['id' => 1008, 'name' => "Assignment 2: REST API Backend with ExpressJS", 'deadline' => time() + 3 * 86400, 'maxgrade' => 100]
             ],
             201 => [
-                ['id' => 1009, 'name' => "과제 1: 분할 정복 기반 Closest Pair 알고리즘 구현", 'deadline' => time() + 20 * 86400, 'maxgrade' => 100]
+                ['id' => 1009, 'name' => "Assignment 1: Closest Pair Algorithm using Divide & Conquer", 'deadline' => time() + 20 * 86400, 'maxgrade' => 100]
             ],
             202 => [
-                ['id' => 1010, 'name' => "과제 1: 대학 정보 시스템 데이터베이스 스키마 E-R 모델 설계", 'deadline' => time() + 25 * 86400, 'maxgrade' => 100]
+                ['id' => 1010, 'name' => "Assignment 1: University DB Schema & ER Modeling", 'deadline' => time() + 25 * 86400, 'maxgrade' => 100]
             ],
             203 => [
-                ['id' => 1011, 'name' => "실습 1: Python Socket API 활용 멀티스레드 채팅 서버", 'deadline' => time() + 30 * 86400, 'maxgrade' => 100]
+                ['id' => 1011, 'name' => "Lab 1: Multi-threaded Chat Server with Python Socket API", 'deadline' => time() + 30 * 86400, 'maxgrade' => 100]
             ]
         ];
 
         $this->quizzes = [
-            101 => [['id' => 801, 'name' => "자료구조 중간고사 퀴즈 (중요)", 'timeclose' => time() - 15 * 86400, 'sumgrades' => 20]],
-            102 => [['id' => 802, 'name' => "기계학습 기초 개념 쪽지시험", 'timeclose' => time() - 25 * 86400, 'sumgrades' => 15]],
-            103 => [['id' => 803, 'name' => "JavaScript DOM 조작 테스트", 'timeclose' => time() - 10 * 86400, 'sumgrades' => 30]],
+            101 => [['id' => 801, 'name' => "Data Structures Midterm Quiz (Important)", 'timeclose' => time() - 15 * 86400, 'sumgrades' => 20]],
+            102 => [['id' => 802, 'name' => "Machine Learning Basics Quiz", 'timeclose' => time() - 25 * 86400, 'sumgrades' => 15]],
+            103 => [['id' => 803, 'name' => "JavaScript DOM Manipulation Quiz", 'timeclose' => time() - 10 * 86400, 'sumgrades' => 30]],
             201 => [],
             202 => [],
             203 => []
@@ -190,7 +190,7 @@ class MockMoodleService
                         'progress' => $progressVal,
                         'isRisk' => $isRisk,
                         'grade' => intval($progressVal * 0.9 + rand(0, 8)),
-                        'feedback' => $isRisk ? "7일 이상 접속 기록이 감지되지 않아 주의 깊은 모니터링이 필요합니다." : "정상 학습 수행 중인 학생입니다.",
+                        'feedback' => $isRisk ? "No logins detected for over 7 days. Careful monitoring is recommended." : "Student is learning actively.",
                     ];
                 }
                 $studentsDb[$courseId] = $roster;
@@ -438,7 +438,7 @@ class MockMoodleService
                 ];
             }
             $gradeitems[] = [
-                'itemname' => "과정 총합계",
+                'itemname' => "Course Total",
                 'itemtype' => "course",
                 'grademax' => 100,
                 'graderaw' => $s['grade'],
@@ -478,7 +478,7 @@ class MockMoodleService
             ];
         }
         $hg_gradeitems[] = [
-            'itemname' => "과정 총합계",
+            'itemname' => "Course Total",
             'itemtype' => "course",
             'grademax' => 100,
             'graderaw' => 86,
@@ -487,7 +487,7 @@ class MockMoodleService
 
         $usergrades[] = [
             'userid' => 1001,
-            'userfullname' => "홍길동",
+            'userfullname' => "Gildong Hong",
             'gradeitems' => $hg_gradeitems
         ];
 

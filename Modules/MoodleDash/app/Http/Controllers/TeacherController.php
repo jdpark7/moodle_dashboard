@@ -19,7 +19,7 @@ class TeacherController extends Controller
     public function dashboard(Request $request)
     {
         if (!Auth::check() || Auth::user()->role !== 'teacher') {
-            return redirect()->route('login')->with('warning', '교수자 계정으로 로그인해 주세요.');
+            return redirect()->route('login')->with('warning', 'Please log in with a teacher account.');
         }
 
         try {
@@ -88,11 +88,11 @@ class TeacherController extends Controller
 
                     // Map last access string
                     if ($lastAccessDays < 1) {
-                        $s->lastaccess_formatted = "오늘 접속";
+                        $s->lastaccess_formatted = "Accessed today";
                     } elseif ($lastAccessDays < 2) {
-                        $s->lastaccess_formatted = "어제 접속";
+                        $s->lastaccess_formatted = "Accessed yesterday";
                     } else {
-                        $s->lastaccess_formatted = intval($lastAccessDays) . "일 전 접속";
+                        $s->lastaccess_formatted = intval($lastAccessDays) . " days ago";
                     }
 
                     $s->is_risk_computed = $isRisk;
@@ -164,8 +164,8 @@ class TeacherController extends Controller
                 'courses' => [],
                 'selected_course_id' => 0,
                 'selected_course' => [
-                    'fullname' => '데이터 동기화 오류',
-                    'summary' => '데이터베이스 연결 상태 또는 테이블 생성 여부를 확인해 주세요.'
+                    'fullname' => 'Data Sync Error',
+                    'summary' => 'Please check the database connection or table creation status.'
                 ],
                 'students' => [],
                 'total_students' => 0,
@@ -177,7 +177,7 @@ class TeacherController extends Controller
                 'chart_grades_labels' => [],
                 'chart_grades_data' => [],
                 'weekly_login_trends' => []
-            ])->withErrors(['error' => '교수자 데이터 동기화 실패: ' . $e->getMessage()]);
+            ])->withErrors(['error' => 'Failed to sync teacher data: ' . $e->getMessage()]);
         }
     }
 
@@ -200,7 +200,7 @@ class TeacherController extends Controller
                       ->where('course_id', $courseId)
                       ->update(['feedback' => $feedbackText]);
 
-            return response()->json(['status' => true, 'message' => '피드백이 데이터베이스에 저장되었습니다.']);
+            return response()->json(['status' => true, 'message' => 'Feedback has been saved successfully.']);
         } catch (Exception $e) {
             return response()->json(['status' => false, 'message' => $e->getMessage()]);
         }
@@ -223,7 +223,7 @@ class TeacherController extends Controller
             $students = $selectedCourse->users;
 
             if ($students->isEmpty()) {
-                return response()->json(['status' => true, 'sent_count' => 0, 'logs' => [], 'message' => '수강생이 없습니다.']);
+                return response()->json(['status' => true, 'sent_count' => 0, 'logs' => [], 'message' => 'No students enrolled.']);
             }
 
             // Fetch assignments for the course
@@ -255,10 +255,10 @@ class TeacherController extends Controller
                 }
 
                 if ($isInactive || $missingAssignName) {
-                    $type = $isInactive ? "미접속" : "과제 미제출";
+                    $type = $isInactive ? "Inactive" : "Missing Assignment";
                     $reason = $isInactive 
-                        ? "최근 " . intval($lastAccessDays) . "일 동안 LMS 미접속" 
-                        : "과제 [{$missingAssignName}] 미제출";
+                        ? "No LMS access for " . intval($lastAccessDays) . " days" 
+                        : "Missing assignment [{$missingAssignName}]";
 
                     // Generate AI message
                     $aiMessage = $ai->generateEncouragement(

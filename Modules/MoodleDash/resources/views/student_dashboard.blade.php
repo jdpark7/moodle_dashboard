@@ -1,6 +1,6 @@
 @extends('moodledash::layouts.app')
 
-@section('title', '나의 수강 대시보드')
+@section('title', 'My Learning Dashboard')
 
 @section('content')
 <div class="fade-in space-y-8">
@@ -8,8 +8,8 @@
     <!-- Welcome Header -->
     <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         <div>
-            <h2 class="text-2xl font-bold text-white font-sans">안녕하세요, {{ session('fullname') }} 학생 👋</h2>
-            <p class="text-slate-400 text-sm mt-1">현재 활성화된 학습 과정과 해야 할 학사 과제들을 체크하세요.</p>
+            <h2 class="text-2xl font-bold text-white font-sans">Welcome, student {{ session('fullname') }} 👋</h2>
+            <p class="text-slate-400 text-sm mt-1">Check your active learning courses and pending academic assignments.</p>
         </div>
     </div>
 
@@ -21,7 +21,7 @@
             </div>
             <div>
                 <span class="block text-2xl font-bold text-white">{{ $total_courses }}</span>
-                <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">진행 중인 강좌 수</span>
+                <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Enrolled Courses</span>
             </div>
         </div>
 
@@ -31,7 +31,7 @@
             </div>
             <div>
                 <span class="block text-2xl font-bold text-white">{{ $avg_progress }}%</span>
-                <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">평균 이수 진행률</span>
+                <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Average Course Progress</span>
             </div>
         </div>
 
@@ -40,8 +40,8 @@
                 <i data-lucide="clock-alert" class="w-6 h-6"></i>
             </div>
             <div>
-                <span class="block text-2xl font-bold text-white">{{ $pending_count }}개</span>
-                <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">제출 대기 과제</span>
+                <span class="block text-2xl font-bold text-white">{{ $pending_count }}</span>
+                <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Pending Assignments</span>
             </div>
         </div>
     </div>
@@ -56,7 +56,7 @@
             <div class="space-y-4">
                 <h3 class="text-lg font-bold text-white flex items-center gap-2">
                     <i data-lucide="graduation-cap" class="text-indigo-400 w-5 h-5"></i>
-                    현재 진행 중인 강좌
+                    Current Enrolled Courses
                 </h3>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -69,12 +69,12 @@
                                         <span class="text-xs font-bold text-slate-400">ID: {{ $course['id'] }}</span>
                                     </div>
                                     <h4 class="text-base font-bold text-white leading-tight mb-2 hover:text-indigo-300 transition-colors">{{ $course['fullname'] }}</h4>
-                                    <p class="text-xs text-slate-400 line-clamp-3 mb-4">{{ strip_tags($course['summary'] ?? '이 강좌에 대한 설명이 등록되지 않았습니다.') }}</p>
+                                    <p class="text-xs text-slate-400 line-clamp-3 mb-4">{{ strip_tags($course['summary'] ?? 'No course description available.') }}</p>
                                 </div>
 
                                 <div class="space-y-2">
                                     <div class="flex items-center justify-between text-xs">
-                                        <span class="text-slate-500">진행도 (이수율)</span>
+                                        <span class="text-slate-500">Course Progress</span>
                                         <span class="font-bold text-brand-400">{{ $course['progress'] }}%</span>
                                     </div>
                                     <div class="w-full bg-slate-950/80 rounded-full h-2 overflow-hidden border border-slate-800/40">
@@ -86,7 +86,7 @@
                     @else
                         <div class="col-span-2 glass p-8 text-center rounded-2xl border border-slate-800">
                             <i data-lucide="book-open-text" class="w-12 h-12 mx-auto text-slate-600 mb-3"></i>
-                            <p class="text-slate-400 text-sm">현재 수강 중인 강좌가 없습니다. 수강 신청을 해주세요!</p>
+                            <p class="text-slate-400 text-sm">You are not currently enrolled in any courses. Please register for a course below!</p>
                         </div>
                     @endif
                 </div>
@@ -96,7 +96,7 @@
             <div class="space-y-4 pt-4">
                 <h3 class="text-lg font-bold text-white flex items-center gap-2">
                     <i data-lucide="plus-circle" class="text-brand-400 w-5 h-5"></i>
-                    신규 강좌 수강신청
+                    Enroll in New Courses
                 </h3>
                 
                 <div class="glass rounded-2xl border border-slate-800 overflow-hidden divide-y divide-slate-850">
@@ -109,16 +109,16 @@
                                         <span class="text-xs font-semibold text-slate-500">ID: {{ $course['id'] }}</span>
                                     </div>
                                     <h4 class="text-sm font-bold text-white">{{ $course['fullname'] }}</h4>
-                                    <p class="text-xs text-slate-400 line-clamp-2">{{ strip_tags($course['summary'] ?? '상세 설명 없음') }}</p>
+                                    <p class="text-xs text-slate-400 line-clamp-2">{{ strip_tags($course['summary'] ?? 'No details available') }}</p>
                                 </div>
                                 <button type="button" onclick="enrollCourse('{{ $course['id'] }}')" class="px-4 py-2 text-xs font-bold rounded-xl bg-brand-600 hover:bg-brand-500 text-white transition-all shadow-md shrink-0 self-start md:self-center">
-                                    수강신청
+                                    Enroll
                                 </button>
                             </div>
                         @endforeach
                     @else
                         <div class="p-6 text-center text-slate-500 text-sm">
-                            신청할 수 있는 신규 강좌가 없습니다.
+                            No new courses available for enrollment.
                         </div>
                     @endif
                 </div>
@@ -128,7 +128,7 @@
             <div class="space-y-4 pt-4">
                 <h3 class="text-lg font-bold text-white flex items-center gap-2">
                     <i data-lucide="history" class="text-slate-400 w-5 h-5"></i>
-                    수강 강좌 이력 (완료/이전 학기)
+                    Course Enrollment History (Completed / Previous Semesters)
                 </h3>
                 
                 <div class="glass p-6 rounded-2xl border border-slate-800 space-y-4">
@@ -143,7 +143,7 @@
                                         <span class="text-[10px] font-bold text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded-full uppercase tracking-wider">{{ $course['shortname'] }}</span>
                                         <h4 class="text-sm font-bold text-white mt-1.5">{{ $course['fullname'] }}</h4>
                                         <div class="flex items-center gap-4 text-[11px] text-slate-500 mt-1">
-                                            <span>진행도: 100% (이수 완료)</span>
+                                            <span>Progress: 100% (Completed)</span>
                                             <span>•</span>
                                             <span>ID: {{ $course['id'] }}</span>
                                         </div>
@@ -152,7 +152,7 @@
                             @endforeach
                         </div>
                     @else
-                        <p class="text-center text-slate-500 text-sm">이전 수강 완료 이력이 없습니다.</p>
+                        <p class="text-center text-slate-500 text-sm">No previous course enrollment history found.</p>
                     @endif
                 </div>
             </div>
@@ -163,12 +163,12 @@
             <div class="sticky top-6 space-y-4">
                 <h3 class="text-lg font-bold text-white flex items-center gap-2">
                     <i data-lucide="clipboard-list" class="text-rose-400 w-5 h-5"></i>
-                    제출 해야 할 과제 목록
+                    Pending Assignments
                 </h3>
 
                 <div class="glass p-6 rounded-3xl border border-slate-800/80 shadow-xl space-y-4">
                     @if (!empty($pending_assignments))
-                        <p class="text-xs text-slate-400">마감 예정일 순서로 정렬된 할 일 목록입니다.</p>
+                        <p class="text-xs text-slate-400">This is a list of tasks sorted by due date.</p>
                         
                         <div class="space-y-4">
                             @foreach ($pending_assignments as $a)
@@ -184,7 +184,7 @@
                                             {{ $a['remaining_text'] }}
                                         </span>
                                         <span class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-slate-900 text-slate-400 border border-slate-800">
-                                            미제출
+                                            Not Submitted
                                         </span>
                                     </div>
                                 </div>
@@ -195,8 +195,8 @@
                             <div class="w-12 h-12 mx-auto rounded-full bg-green-500/10 text-green-400 flex items-center justify-center mb-3">
                                 <i data-lucide="check-check" class="w-6 h-6"></i>
                             </div>
-                            <p class="text-slate-300 font-semibold text-sm">완벽합니다!</p>
-                            <p class="text-slate-500 text-xs mt-1">제출 예정인 과제가 모두 완료되었습니다.</p>
+                            <p class="text-slate-300 font-semibold text-sm">Excellent!</p>
+                            <p class="text-slate-500 text-xs mt-1">All pending assignments have been submitted.</p>
                         </div>
                     @endif
                 </div>
@@ -209,9 +209,9 @@
 @section('extra_js')
 <script>
     function enrollCourse(courseId) {
-        if (!confirm("해당 강좌를 수강신청하시겠습니까?")) return;
+        if (!confirm("Are you sure you want to enroll in this course?")) return;
         
-        showLoading("수강신청을 처리하는 중...");
+        showLoading("Processing enrollment...");
 
         const formData = new FormData();
         formData.append('course_id', courseId);
@@ -231,13 +231,13 @@
             if (data.status) {
                 window.location.reload();
             } else {
-                alert("수강신청 에러: " + data.message);
+                alert("Enrollment error: " + data.message);
             }
         })
         .catch(error => {
             hideLoading();
             console.error('Error:', error);
-            alert("서버 통신 실패");
+            alert("Server communication failed.");
         });
     }
 </script>

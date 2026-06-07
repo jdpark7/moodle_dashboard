@@ -92,35 +92,35 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>LMS 학업 독려 이메일 발송 현황 보고</h1>
+            <h1>LMS Academic Encouragement Email Status Report</h1>
         </div>
         <div class="content">
-            <p>교수자님 안녕하십니까,</p>
-            <p><strong>{{ $courseName }}</strong> 강좌의 수강생 모니터링 분석에 기반한 학업 독려 이메일 발송 결과 요약본입니다.</p>
+            <p>Dear Professor,</p>
+            <p>This is a summary of the academic encouragement emails sent based on the monitoring analysis of the course <strong>{{ $courseName }}</strong>.</p>
             
             <div class="stats-box">
                 <div class="stats-item">
-                    <h4>과목명</h4>
+                    <h4>Course Name</h4>
                     <p>{{ $courseName }}</p>
                 </div>
                 <div class="stats-item">
-                    <h4>발송 대상자</h4>
-                    <p>{{ $sentCount }}명</p>
+                    <h4>Recipients</h4>
+                    <p>{{ $sentCount }} student(s)</p>
                 </div>
                 <div class="stats-item">
-                    <h4>상태</h4>
-                    <p>발송 완료 (Log)</p>
+                    <h4>Status</h4>
+                    <p>Sent (Logged)</p>
                 </div>
             </div>
 
-            <h3>발송 대상자 목록</h3>
+            <h3>Recipient List</h3>
             <table>
                 <thead>
                     <tr>
-                        <th>학생 정보</th>
-                        <th>유형</th>
-                        <th>독려 사유</th>
-                        <th>메시지 요약</th>
+                        <th>Student Info</th>
+                        <th>Type</th>
+                        <th>Outreach Reason</th>
+                        <th>Message Preview</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -143,7 +143,7 @@
                     @else
                         <tr>
                             <td colspan="4" style="text-align: center; color: #94a3b8; padding: 20px;">
-                                금일 이메일 발송이 필요한 경고 대상 학생이 없습니다.
+                                 No students requiring warning emails today.
                             </td>
                         </tr>
                     @endif

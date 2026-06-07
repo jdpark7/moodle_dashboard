@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" class="dark">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -124,7 +124,7 @@
     <!-- Loading Overlay -->
     <div id="loading-overlay" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#090d16]/80 backdrop-blur-md transition-opacity duration-300 pointer-events-none opacity-0">
         <div class="w-12 h-12 border-4 border-brand-500 border-t-transparent rounded-full animate-spinner mb-4"></div>
-        <div class="text-lg font-medium text-slate-300" id="loading-text">Moodle 데이터를 불러오는 중...</div>
+        <div class="text-lg font-medium text-slate-300" id="loading-text">Loading Moodle data...</div>
     </div>
 
     <!-- Toast Notification -->
@@ -198,18 +198,18 @@
                 @if (session('role') === 'student')
                     <a href="{{ route('student.dashboard') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 {{ request()->routeIs('student.dashboard') ? 'bg-brand-500/10 text-brand-400 border border-brand-500/20 font-semibold' : 'text-slate-400 hover:bg-slate-800/40 hover:text-slate-200' }}">
                         <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
-                        <span>나의 수강 대시보드</span>
+                        <span>My Learning Dashboard</span>
                     </a>
                 @elseif (session('role') === 'teacher')
                     <a href="{{ route('teacher.dashboard') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 {{ request()->routeIs('teacher.dashboard') ? 'bg-brand-500/10 text-brand-400 border border-brand-500/20 font-semibold' : 'text-slate-400 hover:bg-slate-800/40 hover:text-slate-200' }}">
                         <i data-lucide="trending-up" class="w-5 h-5"></i>
-                        <span>학습 분석 대시보드</span>
+                        <span>Learning Analytics Dashboard</span>
                     </a>
                 @endif
                 
                 <a href="{{ route('profile.edit') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 {{ request()->routeIs('profile.edit') ? 'bg-brand-500/10 text-brand-400 border border-brand-500/20 font-semibold' : 'text-slate-400 hover:bg-slate-800/40 hover:text-slate-200' }}">
                     <i data-lucide="settings" class="w-5 h-5"></i>
-                    <span>내 프로필 수정</span>
+                    <span>Edit My Profile</span>
                 </a>
             </nav>
 
@@ -221,11 +221,11 @@
                         <div class="flex-1 min-w-0">
                             <h4 class="text-xs font-semibold text-slate-200 truncate group-hover:text-brand-400 transition-colors">{{ session('fullname') }}</h4>
                             <p class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">
-                                {{ session('role') === 'teacher' ? '교수자 (Teacher)' : '학생 (Student)' }}
+                                {{ session('role') === 'teacher' ? 'Teacher' : 'Student' }}
                             </p>
                         </div>
                     </a>
-                    <a href="{{ route('logout') }}" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:bg-red-500/10 hover:text-red-400 transition-colors" title="로그아웃">
+                    <a href="{{ route('logout') }}" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:bg-red-500/10 hover:text-red-400 transition-colors" title="Logout">
                         <i data-lucide="log-out" class="w-4 h-4"></i>
                     </a>
                 </div>
@@ -259,10 +259,10 @@
                     @endif
                     
                     @if (session()->has('role'))
-                        <a href="{{ route('profile.edit') }}" class="md:hidden text-slate-400 hover:text-slate-200 mr-2" title="프로필 수정">
+                        <a href="{{ route('profile.edit') }}" class="md:hidden text-slate-400 hover:text-slate-200 mr-2" title="Edit Profile">
                             <i data-lucide="settings" class="w-5 h-5"></i>
                         </a>
-                        <a href="{{ route('logout') }}" class="md:hidden text-slate-400 hover:text-slate-200" title="로그아웃">
+                        <a href="{{ route('logout') }}" class="md:hidden text-slate-400 hover:text-slate-200" title="Logout">
                             <i data-lucide="log-out" class="w-5 h-5"></i>
                         </a>
                     @endif

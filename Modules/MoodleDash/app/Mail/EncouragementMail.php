@@ -31,7 +31,7 @@ class EncouragementMail extends Mailable
      */
     public function build()
     {
-        return $this->subject("[LMS 학습 현황 안내] {$this->studentName} 학생, {$this->courseName} 학사 안내 메일입니다.")
+        return $this->subject("[LMS Learning Status] {$this->studentName}, academic guidance for course {$this->courseName}.")
                     ->view('moodledash::emails.encouragement');
     }
 }

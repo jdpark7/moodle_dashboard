@@ -29,7 +29,7 @@ class TeacherSummaryMail extends Mailable
      */
     public function build()
     {
-        return $this->subject("[LMS 요약 보고] {$this->courseName} 학업 독려 및 이메일 발송 현황 보고")
+        return $this->subject("[LMS Summary Report] {$this->courseName} Academic Encouragement & Email Outreach Status")
                     ->view('moodledash::emails.teacher_summary');
     }
 }

@@ -13,7 +13,7 @@ class ProfileController extends Controller
     public function edit()
     {
         if (!Auth::check()) {
-            return redirect()->route('login')->with('warning', '로그인 후 이용 가능합니다.');
+            return redirect()->route('login')->with('warning', 'Please log in to continue.');
         }
 
         $user = Auth::user();
@@ -23,7 +23,7 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         if (!Auth::check()) {
-            return redirect()->route('login')->with('warning', '로그인 후 이용 가능합니다.');
+            return redirect()->route('login')->with('warning', 'Please log in to continue.');
         }
 
         $user = Auth::user();
@@ -44,11 +44,11 @@ class ProfileController extends Controller
         }
 
         $request->validate($rules, [
-            'email.unique' => '이미 등록된 이메일입니다.',
-            'password.confirmed' => '비밀번호 확인이 일치하지 않습니다.',
-            'password.min' => '비밀번호는 최소 6자 이상이어야 합니다.',
-            'userpicture.image' => '올바른 이미지 파일 형식이 아닙니다.',
-            'userpicture.max' => '이미지 크기는 최대 2MB까지 가능합니다.'
+            'email.unique' => 'This email is already registered.',
+            'password.confirmed' => 'The password confirmation does not match.',
+            'password.min' => 'The password must be at least 6 characters.',
+            'userpicture.image' => 'The file must be an image.',
+            'userpicture.max' => 'The image size cannot exceed 2MB.'
         ]);
 
         try {
@@ -79,10 +79,10 @@ class ProfileController extends Controller
                 'userpictureurl' => $user->userpictureurl,
             ]);
 
-            return back()->with('success', '프로필 정보가 성공적으로 수정되었습니다.');
+            return back()->with('success', 'Profile updated successfully.');
 
         } catch (Exception $e) {
-            return back()->withInput()->withErrors(['error' => '프로필 수정 중 오류가 발생했습니다: ' . $e->getMessage()]);
+            return back()->withInput()->withErrors(['error' => 'An error occurred while updating profile: ' . $e->getMessage()]);
         }
     }
 }
